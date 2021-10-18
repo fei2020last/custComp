@@ -1,9 +1,15 @@
-// 路由配置文件
+/**
+ * 路由配置文件
+ * 使用 createRouter() 函数来进行 Vue Router 的实例化
+ * 使用 createWebHashHistory() 函数来创建Hash模式的路由模式对象
+ */
 import {
   createRouter,
   createWebHistory
 } from 'vue-router'
-const index = () => import('@/views/home/index.vue') //机构管理
+const index = () => import('@/views/home/index.vue') //主页
+const useResult = () => import('@/views/useComps/useResult.vue') //结果页使用
+
 const routes = [{
     path: '/',
     redirect: '/index'
@@ -11,8 +17,14 @@ const routes = [{
   {
     name: 'index',
     path: '/index',
-    component: index, //主页
+    component: index,
+  },
+  {
+    name: 'useResult',
+    path: '/useResult',
+    component: useResult,
   }
+
 ]
 const routerHistory = createWebHistory()
 const router = createRouter({

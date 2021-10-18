@@ -37,7 +37,7 @@ module.exports = {
     //config.plugins.delete('prefetch');
 
     config.plugin('html').tap((args) => {
-      args[0].title = 'VUE模板'
+      args[0].title = '自定义组件'
       return args
     })
   },
@@ -90,9 +90,7 @@ module.exports = {
     hotOnly: true, // 热更新
     proxy: {
       '/dev': {
-        // target: 'http://192.168.7.38:8051/dashboard',
         target: 'http://222.171.203.221:19100/shj',
-        // target: 'http://10.100.196.113:8051',
         changeOrigin: true,
         ws: true,
         pathRewrite: {
