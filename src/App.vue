@@ -10,30 +10,17 @@ export default {
       curTagName: ''
     }
   },
-  watch: {
-    $route: {
-      handler(newRouter) {
-        console.log('this.$route', this.$route)
-        console.log('newRouter', newRouter)
-        this.curTagName = newRouter.name
-      },
-      immediate: true
-    }
-  }
+  watch: {}
 }
 </script>
 
 <style>
-html {
-  background: #deebfd;
-}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif, Microsoft Yahei;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
-  min-height: 600px;
-  min-width: 1580px;
-  overflow: hidden;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>

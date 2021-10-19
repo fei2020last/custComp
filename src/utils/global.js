@@ -48,13 +48,7 @@ global.pullupConfig = {
  * 获取时间的方法以get开头命名 时间格式化以format开头命名 校验以check开头命名
  * @returns 
  */
-
-//返回 2018 格式 全局的年份
-global.getYear = function () {
-  return window.localStorage.getItem('yeardata')
-}
-
-//返回 2018-06 格式
+// ——————————————获取当前月份(格式：2021-10)————————————————————————
 global.getMonth = function () {
   var now = new Date()
   var year = now.getFullYear()
@@ -65,7 +59,7 @@ global.getMonth = function () {
   return year + '-' + mon
 }
 
-// ——————————————获取当前日期(格式：2019-03-26)————————————————————————
+// ————————获取当前日期(格式："2021-10-18")——————
 global.getCurrentDate = function () {
   var myDate = new Date();
   var nowY = myDate.getFullYear();
@@ -76,7 +70,7 @@ global.getCurrentDate = function () {
 }
 
 //————————————————时间格式化————————————————————————
-//返回 2018-06-29 00:00 格式
+//传入'Thu Oct 18 2021 12:00:00 GMT+0800'（中国标准时间） 返回 2021-10-18 12:00 格式
 global.formatMinute = function (date) {
   var now = new Date(date);
   var year = now.getFullYear();
@@ -114,20 +108,34 @@ global.formatDate = function (date) {
   return year + '-' + mon + '-' + date;
 }
 
-//传入2018-06 返回 201806 格式
+//传入"2018-06" 返回 "201806" 格式
 global.formatDateMonth = function (date) {
   return date.substring(0, 4) + date.substring(5, 7)
 }
 
-//传入201806 格式 6位 返回 2018-06 格式
-global.formatDateMonthHeng = function (date) {
+//传入"201806" 格式 6位 返回 "2018-06" 格式
+global.formatMonthHeng = function (date) {
   return date.substring(0, 4) + '-' + date.substring(4, 6)
 }
 
-//传入20180629格式  8位 返回 2018-06-29 格式
+//传入"20180629" 格式 8位 返回 "2018-06-29" 格式
 global.formatDateString = function (date) {
   return date.substring(0, 4) + '-' + date.substring(4, 6) + '-' + date.substring(6)
 }
+
+//——————————— 判断时间间隔是否超过24个小时 ———————
+global.overHours = function (startDate, endDate) {
+  var date1 = new Date("2004/09/16 20:08:00");
+  var date2 = new Date("2004/09/17 20:08:00");
+  var date3 = (date2.getTime() - date1.getTime()) / 1000; //相差秒数
+  if (date3 > 60 * 60 * 24 * 1000) {
+    alert("开始时间与结束时间间隔大于24小时！");
+    return false;
+  }
+}
+
+
+
 
 //————————————————校       验————————————————————————
 //身份证号校验
@@ -318,4 +326,36 @@ global.toLowerCh = function (arr, id, vm) {
     }
   }
   return arr
+}
+
+
+//避免安卓手机输入法弹出框挡住输入框
+global.isAndroid = function () {
+  var u = navigator.userAgent;
+  var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+  if (isAndroid) {
+    return true
+  } else {
+    return false
+  }
+}
+//为了适应苹果浏览器初始时展现多行状态。
+global.autoTextarea = function () {
+  var textarea = document.getElementsByTagName("textarea");
+  for (var i = 0; i < textarea.length; i++) {
+    textarea[i].style.height = 'auto';
+    textarea[i].scrollTop = 0; //防抖动
+    textarea[i].style.height = textarea[i].scrollHeight + 'px';
+    textarea[i].addEventListener('input', function (e) {
+      console.log(e.target.scrollHeight);
+      e.target.style.height = 'auto';
+      e.target.scrollTop = 0;
+      if (e.target.scrollHeight >= 100) {
+        //控制最高4行
+        e.target.style.height = 100 + 'px';
+      } else {
+        e.target.style.height = e.target.scrollHeight + 'px';
+      }
+    })
+  }
 }

@@ -8,7 +8,8 @@ import {
   createWebHistory
 } from 'vue-router'
 const index = () => import('@/views/home/index.vue') //主页
-const useResult = () => import('@/views/useComps/useResult.vue') //结果页使用
+const useResult = () => import('@/views/useComps/useResult.vue') //结果页
+const contentForm = () => import('@/views/useComps/useContentForm.vue') //表单纵向排版布局
 
 const routes = [{
     path: '/',
@@ -23,7 +24,12 @@ const routes = [{
     name: 'useResult',
     path: '/useResult',
     component: useResult,
-  }
+  },
+  {
+    name: 'contentForm',
+    path: '/contentForm',
+    component: contentForm,
+  },
 
 ]
 const routerHistory = createWebHistory()

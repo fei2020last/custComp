@@ -77,7 +77,15 @@ module.exports = {
     loaderOptions: {
       css: {
         importLoaders: 1 // @import 引入的文件可被一个loader处理 （2 可被两个loader处理）
-      }
+      },
+
+      // 手机端px转化为rem
+      // postcss: {
+      //   // options here will be passed to postcss-loader
+      //   plugins: [require('postcss-px2rem')({
+      //     remUnit: 75 //如果是750的设计图需要将remUnit替换成75 这样生成出来的比例就是1rem=100px
+      //   })]
+      // }
     }
   },
   // webpack-dev-server 相关配置 https://webpack.js.org/configuration/dev-server/

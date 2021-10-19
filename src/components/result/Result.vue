@@ -1,14 +1,22 @@
 <!-- 结果页封装 -->
 <template>
   <div class="Result">
-    <el-image :src="item.status === 'success' ? successBg : failBg" style="width: 250px">
+    <el-image :src="resultMsg.status === 'success' ? successBg : failBg" style="width: 250px">
       <div slot="placeholder" class="image-slot">图片加载中<span class="dot">...</span></div>
     </el-image>
-    <div :class="item.status === 'success' ? 'success-title' : 'fail-title'">{{ item.title }}</div>
-    <div>{{ item.describe }}</div>
-    <div class="cm-flex cm-jc-sa">
-      <div @click="cancel()" class="cm-btn-cancel">{{ item.cancelText }}</div>
-      <div @click="submit()" class="cm-btn-submit">{{ item.submitText }}</div>
+    <div :class="resultMsg.status === 'success' ? 'success-title' : 'fail-title'">
+      {{ resultMsg.title }}
+    </div>
+    <div class="cm-flex">
+      <div @click="cancel()" class="cm-btn-cancel">
+        <el-button>{{ resultMsg.cancelText }}</el-button>
+      </div>
+      <div @click="submit()" class="cm-btn-submit">
+        <el-button type="primary">{{ resultMsg.submitText }}</el-button>
+      </div>
+      <div class="test">
+        <button>测试</button>
+      </div>
     </div>
   </div>
 </template>
@@ -21,7 +29,7 @@ export default {
   name: 'Result',
   emits: ['on-cancel', 'on-submit'],
   props: {
-    item: {
+    resultMsg: {
       type: Object,
       default: {}
     }
@@ -56,8 +64,8 @@ export default {
   beforeMount() {}, //生命周期 - 挂载之前
   beforeUpdate() {}, //生命周期 - 更新之前
   updated() {}, //生命周期 - 更新之后
-  beforeDestroy() {}, //生命周期 - 销毁之前
-  destroyed() {}, //生命周期 - 销毁完成
+  beforeUnmount() {}, //生命周期 - 销毁之前
+  unmounted() {}, //生命周期 - 销毁完成
   activated() {} //如果页面有keep-alive缓存功能，这个函数会触发
 }
 </script>
@@ -65,5 +73,35 @@ export default {
 //@import url(); 引入公共css类
 
 .Result {
+  .success-title {
+    padding: 0.4rem;
+    font-size: 0.35rem;
+    color: #15bc83;
+  }
+  .fail-title {
+    padding: 0.4rem;
+    font-size: 0.35rem;
+    color: #f25643;
+  }
+  //将父容器的display：flex，侧边栏大小固定后，将内容区flex：1，内容区则会自动放大占满剩余空间
+  .cm-flex {
+    display: flex;
+    margin-top: 1rem;
+    .cm-btn-cancel {
+      flex: 1;
+      .el-button {
+        border: 1px solid #5b88f3;
+      }
+    }
+    .cm-btn-submit {
+      flex: 1;
+    }
+    .test {
+      button {
+        width: 100px;
+        height: 50px;
+      }
+    }
+  }
 }
 </style>

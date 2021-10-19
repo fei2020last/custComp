@@ -1,3 +1,4 @@
+<!-- loading加载框 -->
 <template>
   <div class="Loading" v-if="show">
     <div class="loadingBox">

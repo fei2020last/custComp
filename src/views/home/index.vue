@@ -2,7 +2,7 @@
 <template>
   <div class="index">
     <el-button type="primary" @click="goUseResult">结果页组件</el-button>
-    <el-button type="success">成功按钮</el-button>
+    <el-button type="success" @click="goContentForm">纵向表单组件</el-button>
   </div>
 </template>
 
@@ -27,23 +27,26 @@ export default {
     //跳转结果页
     goUseResult() {
       this.$router.push({ name: 'useResult' })
+    },
+    goContentForm() {
+      this.$router.push({ name: 'contentForm' })
     }
   },
   //生命周期 - 创建之前
   beforeCreate() {},
-  //生命周期 - 创建完成（可以访问当前this实例）
+  //生命周期 - 在绑定元素的 attribute 或事件监听器被应用之前调用（可以访问当前this实例）
   created() {},
-  //生命周期 - 挂载之前
+  // 在绑定元素的父组件挂载之前调用
   beforeMount() {},
-  //生命周期 - 挂载完成（可以访问DOM元素）
+  // 绑定元素的父组件被挂载时调用
   mounted() {},
-  //生命周期 - 更新之前
+  // 在包含组件的 VNode 更新之前调用
   beforeUpdate() {},
-  //生命周期 - 更新之后
+  // 在包含组件的 VNode 及其子组件的 VNode 更新之后调用
   updated() {},
-  //生命周期 - 销毁之前
+  // 在绑定元素的父组件卸载之前调用
   beforeUnmount() {},
-  //生命周期 - 销毁完成
+  // 卸载绑定元素的父组件时调用
   unmounted() {},
   //如果页面有keep-alive缓存功能，这个函数会触发
   activated() {}
