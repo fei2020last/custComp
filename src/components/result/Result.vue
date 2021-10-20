@@ -14,9 +14,6 @@
       <div @click="submit()" class="cm-btn-submit">
         <el-button type="primary">{{ resultMsg.submitText }}</el-button>
       </div>
-      <div class="test">
-        <button>测试</button>
-      </div>
     </div>
   </div>
 </template>
@@ -95,12 +92,6 @@ export default {
     }
     .cm-btn-submit {
       flex: 1;
-    }
-    .test {
-      button {
-        width: 100px;
-        height: 50px;
-      }
     }
   }
 }

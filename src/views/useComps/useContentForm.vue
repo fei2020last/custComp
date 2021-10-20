@@ -1,7 +1,7 @@
 <!-- 使用 Content 表单纵向排版布局 -->
 <template>
   <div class="useContentForm">
-    <el-context :list="contentList" :result="contentItem" />
+    <el-context :list="contentList" :result="contentItem" @on-back="goBack" />
   </div>
 </template>
 <script>
@@ -50,7 +50,11 @@ export default {
   //监控data中的数据变化
   watch: {},
   //方法集合
-  methods: {},
+  methods: {
+    goBack() {
+      this.$router.go(-1)
+    }
+  },
   //生命周期 - 创建之前
   beforeCreate() {},
   //生命周期 - 在绑定元素的 attribute 或事件监听器被应用之前调用（可以访问当前this实例）

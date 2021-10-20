@@ -6,6 +6,8 @@
         <span class="cm-red" v-if="item.require">*</span>
         <span
           :class="[
+            'fontTitle',
+            // 聚焦时的样式
             focusText == item.field ? 'edit-focus-text' : '',
             !item.require ? 'cm-ml-02' : ''
           ]"
@@ -39,6 +41,11 @@
       </el-input>
 
       <el-divider></el-divider>
+    </div>
+    <div class="cm-flex">
+      <div @click="goBack()" class="cm-btn-back">
+        <el-button type="primary">返回</el-button>
+      </div>
     </div>
   </div>
 </template>
@@ -87,6 +94,9 @@ export default {
       if (item.dealWithKeyboard && isAndroid) {
         document.body.style.height = document.body.clientHeight + 100 + 'px'
       }
+    },
+    goBack() {
+      this.$emit('on-back', '')
     }
   },
   //生命周期 - 创建之前
@@ -125,19 +135,32 @@ export default {
     .cm-red {
       color: red;
     }
-
+    .fontTitle {
+      font-size: 16px;
+    }
     .edit-focus-text {
       color: #3296fa;
-      font-size: 0.22rem;
+      font-size: 16px;
+    }
+    .el-input {
+      font-size: 16px;
     }
 
     //隐藏边框
     .el-input__inner,
     .el-textarea__inner {
       border: none;
+      line-height: 2.5;
     }
     .el-divider--horizontal {
       margin: 10px 0;
+    }
+  }
+  .cm-flex {
+    display: flex;
+    margin-top: 1rem;
+    .cm-btn-back {
+      flex: 1;
     }
   }
 }
