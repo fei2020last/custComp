@@ -9,7 +9,9 @@ import {
 } from 'vue-router'
 const index = () => import('@/views/home/index.vue') //主页
 const useResult = () => import('@/views/useComps/useResult.vue') //结果页
-const contentForm = () => import('@/views/useComps/useContentForm.vue') //表单纵向排版布局
+const useContentForm = () => import('@/views/useComps/useContentForm.vue') //表单纵向排版布局
+const useToast = () => import('@/views/useComps/useToast.vue') //表单纵向排版布局
+const useLoading = () => import('@/views/useComps/useLoading.vue') //Loading自定义指令
 
 const routes = [{
     path: '/',
@@ -26,10 +28,21 @@ const routes = [{
     component: useResult,
   },
   {
-    name: 'contentForm',
-    path: '/contentForm',
-    component: contentForm,
+    name: 'useContentForm',
+    path: '/useContentForm',
+    component: useContentForm,
   },
+  {
+    name: 'useToast',
+    path: '/useToast',
+    component: useToast,
+  },
+  {
+    name: 'useLoading',
+    path: '/useLoading',
+    component: useLoading,
+  },
+
 
 ]
 const routerHistory = createWebHistory()

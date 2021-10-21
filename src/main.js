@@ -21,10 +21,11 @@ import 'element-plus/lib/theme-chalk/index.css'
 
 import 'amfe-flexible' //引入px自动转化rem工具
 
+import lazyPlugin from 'vue3-lazy' //vue3-lazy的使用(npm install vue3-lazy -S)
 import helloworld from '@/components/HelloWorld.vue'
 import result from '@/components/result/index.js'
 import contentForm from "@/components/contentForm/index.js"
-
+import loadingDirective from '@/components/loading/directive.js'
 const app = createApp(App)
 app.use(router)
 app.use(ElementPlus)
@@ -33,18 +34,30 @@ app.use(ElementPlus)
 app.component('helloworld', {
   helloworld
 })
-app.use(result);
-app.use(contentForm);
+app.use(result)
+app.use(contentForm)
+app.use(lazyPlugin, {
+  loading: require('@/assets/img/fail.png')
+}).directive('loading', loadingDirective);
+
 app.mount('#app')
 
 //使用global内的全局变量
 app.config.globalProperties.$datas = global
 app.config.globalProperties.$echarts = echarts
+
+//路由的前置守卫
 router.beforeEach((to, from, next) => {
   // to: Route: 即将要进入的目标 路由对象
   // from: Route: 当前导航正要离开的路由
   // next: Function: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。
   // console.log("to,from", to, from);
+
+  // setTimeout(() => {
+  //   Loading.show();
+  // }, 1000)
+
+  // Loading.hide();
   next()
 
 })

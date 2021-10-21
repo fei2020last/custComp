@@ -1,4 +1,4 @@
-import contentForm from './contentForm.vue';
+import contentForm from './ContentForm.vue';
 const context = {
   install: function (Vue) {
     //定义一个纵向表单组件。

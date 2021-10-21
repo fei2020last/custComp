@@ -1,8 +1,32 @@
 <!-- 首页 -->
 <template>
   <div class="index">
-    <el-button type="primary" @click="goUseResult">结果页组件</el-button>
-    <el-button type="success" @click="goContentForm">纵向表单组件</el-button>
+    <el-row>
+      <el-col :span="12">
+        <el-button type="primary" @click="goUseResult">结果页组件</el-button>
+      </el-col>
+      <el-col :span="12">
+        <el-button type="success" @click="goContentForm">纵向表单组件</el-button>
+      </el-col>
+    </el-row>
+
+    <el-row>
+      <el-col :span="12">
+        <el-button @click="goToast">Toast弹窗</el-button>
+      </el-col>
+      <el-col :span="12">
+        <el-button type="info" @click="goLoading">load自定指令</el-button>
+      </el-col>
+    </el-row>
+
+    <el-row>
+      <el-col :span="12">
+        <el-button type="warning">Warning</el-button>
+      </el-col>
+      <el-col :span="12">
+        <el-button type="danger">Danger</el-button>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -24,12 +48,17 @@ export default {
   watch: {},
   //方法集合
   methods: {
-    //跳转结果页
     goUseResult() {
       this.$router.push({ name: 'useResult' })
     },
     goContentForm() {
-      this.$router.push({ name: 'contentForm' })
+      this.$router.push({ name: 'useContentForm' })
+    },
+    goToast() {
+      this.$router.push({ name: 'useToast' })
+    },
+    goLoading() {
+      this.$router.push({ name: 'useLoading' })
     }
   },
   //生命周期 - 创建之前
@@ -55,5 +84,14 @@ export default {
 <style lang="less">
 //@import url(); 引入公共css类
 .index {
+  .el-row {
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .el-button {
+    width: 126px;
+  }
 }
 </style>
