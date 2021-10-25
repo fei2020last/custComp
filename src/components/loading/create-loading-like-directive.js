@@ -12,11 +12,11 @@ const relativeCls = 'g-relative'
 export default function createLoadingLikeDirective(Comp) {
   return {
     mounted(el, binding) {
-      console.log(el, binding)
+      // console.log(el, binding)
       const app = createApp(Comp)
-      console.log(app)
+      // console.log(app)
       const instance = app.mount(document.createElement('div'))
-      console.log(instance)
+      // console.log(instance)
       const name = Comp.name
       if (!el[name]) {
         el[name] = {}
@@ -38,7 +38,7 @@ export default function createLoadingLikeDirective(Comp) {
         el[name].instance.setTitle(title)
       }
       if (binding.value !== binding.oldValue) {
-        console.log(binding.value)
+        // console.log(binding.value)
         binding.value ? append(el) : remove(el)
       }
     }
@@ -47,7 +47,7 @@ export default function createLoadingLikeDirective(Comp) {
   function append(el) {
     const name = Comp.name
     const style = getComputedStyle(el)
-    console.log(style.position)
+    // console.log(style.position)
     if (['absolute', 'fixed', 'relative'].indexOf(style.position) === -1) {
       addClass(el, relativeCls)
     }

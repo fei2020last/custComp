@@ -21,12 +21,20 @@
 
     <el-row>
       <el-col :span="12">
-        <el-button type="warning">Warning</el-button>
+        <el-button type="warning" @click="goCarousel">Carousel轮播图</el-button>
       </el-col>
       <el-col :span="12">
         <el-button type="danger">Danger</el-button>
       </el-col>
     </el-row>
+    <!-- v-lazy的使用 -->
+    <!-- <div>
+      <ul>
+        <li v-for="img in list">
+          <img v-lazy="img.src" />
+        </li>
+      </ul>
+    </div> -->
   </div>
 </template>
 
@@ -40,7 +48,22 @@ export default {
   components: {},
   data() {
     //这里存放数据
-    return {}
+    return {
+      list: [
+        {
+          src: require('../../assets/img/success.png')
+        },
+        {
+          src: require('../../assets/img/fail.png')
+        },
+        {
+          src: require('../../assets/img/success.png')
+        },
+        {
+          src: require('../../assets/img/fail.png')
+        }
+      ]
+    }
   },
   //计算属性
   computed: {},
@@ -59,6 +82,9 @@ export default {
     },
     goLoading() {
       this.$router.push({ name: 'useLoading' })
+    },
+    goCarousel() {
+      this.$router.push({ name: 'useCarousel' })
     }
   },
   //生命周期 - 创建之前

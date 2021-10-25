@@ -9,7 +9,7 @@ import router from './router'
 import {
   global
 } from './utils/global'
-import * as echarts from 'echarts';
+import * as echarts from 'echarts'
 
 //element+
 import ElementPlus from 'element-plus'
@@ -22,10 +22,13 @@ import 'element-plus/lib/theme-chalk/index.css'
 import 'amfe-flexible' //引入px自动转化rem工具
 
 import lazyPlugin from 'vue3-lazy' //vue3-lazy的使用(npm install vue3-lazy -S)
+
+//全局组件
 import helloworld from '@/components/HelloWorld.vue'
 import result from '@/components/result/index.js'
 import contentForm from "@/components/contentForm/index.js"
 import loadingDirective from '@/components/loading/directive.js'
+import carousel from "@/components/carouselImg/index.js"
 const app = createApp(App)
 app.use(router)
 app.use(ElementPlus)
@@ -36,10 +39,14 @@ app.component('helloworld', {
 })
 app.use(result)
 app.use(contentForm)
-app.use(lazyPlugin, {
-  loading: require('@/assets/img/fail.png')
-}).directive('loading', loadingDirective);
+app.use(carousel)
 
+//使用图片懒加载插件
+app.use(lazyPlugin, {
+  loading: require('@/assets/img/fail.png'), //图片加载中时显示的默认图片
+  error: require('@/assets/img/fail.png') //图片加载失败后显示的图片
+})
+app.directive('loading', loadingDirective)
 app.mount('#app')
 
 //使用global内的全局变量
