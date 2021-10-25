@@ -24,7 +24,7 @@
         <el-button type="warning" @click="goCarousel">Carousel轮播图</el-button>
       </el-col>
       <el-col :span="12">
-        <el-button type="danger">Danger</el-button>
+        <el-button type="danger" @click="goQuestionnaire">问卷调查</el-button>
       </el-col>
     </el-row>
     <!-- v-lazy的使用 -->
@@ -85,6 +85,9 @@ export default {
     },
     goCarousel() {
       this.$router.push({ name: 'useCarousel' })
+    },
+    goQuestionnaire() {
+      this.$router.push({ name: 'useQuestionnaire' })
     }
   },
   //生命周期 - 创建之前
@@ -110,6 +113,7 @@ export default {
 <style lang="less">
 //@import url(); 引入公共css类
 .index {
+  text-align: center;
   .el-row {
     margin-bottom: 20px;
     &:last-child {

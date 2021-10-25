@@ -29,6 +29,7 @@ import result from '@/components/result/index.js'
 import contentForm from "@/components/contentForm/index.js"
 import loadingDirective from '@/components/loading/directive.js'
 import carousel from "@/components/carouselImg/index.js"
+import questionnaire from "@/components/questionnaire/index.js"
 const app = createApp(App)
 app.use(router)
 app.use(ElementPlus)
@@ -40,6 +41,7 @@ app.component('helloworld', {
 app.use(result)
 app.use(contentForm)
 app.use(carousel)
+app.use(questionnaire)
 
 //使用图片懒加载插件
 app.use(lazyPlugin, {

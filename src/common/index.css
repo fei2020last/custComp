@@ -1,0 +1,49 @@
+/*init*/
+body,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /*font-size: 62.5%;*/
+}
+
+input {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  /* chrome、safari私有属性 */
+  color: #ccc;
+  font-size: 14px;
+}
+
+input::-moz-input-placeholder,
+textarea::-moz-input-placeholder {
+  /* firefox浏览器私有属性 */
+  color: #ccc;
+  font-size: 14px;
+}
+
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+  /* IE浏览器私有属性 */
+  color: #ccc;
+  font-size: 14px;
+}
+
+input:disabled,
+input[disabled] {
+  color: #000;
+  opacity: 1;
+}
+
+textarea:disabled,
+textarea[disabled] {
+  color: #000;
+  opacity: 1;
+}

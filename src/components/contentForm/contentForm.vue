@@ -131,6 +131,7 @@ export default {
   .conItem {
     text-align: left;
     .cm-title {
+      padding: 0 10px;
     }
     .cm-red {
       color: red;

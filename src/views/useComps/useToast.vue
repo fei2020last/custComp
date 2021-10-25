@@ -2,6 +2,7 @@
 <template>
   <div class="useToast">
     <el-button type="primary" @click.stop="submit">Toast弹窗</el-button>
+    <el-button @click.stop="goBack">返回</el-button>
   </div>
 </template>
 
@@ -23,7 +24,10 @@ export default {
   watch: {},
   //方法集合
   methods: {
-    submit() {}
+    submit() {},
+    goBack() {
+      history.back()
+    }
   },
   //生命周期 - 创建之前
   beforeCreate() {},

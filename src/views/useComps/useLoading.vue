@@ -3,6 +3,7 @@
   <div class="useLoading">
     <h2>Loading自定义指令</h2>
     <el-button @click="loading = true">Loading</el-button>
+    <el-button @click.stop="goBack">返回</el-button>
     <div class="recommend" v-loading="loading"></div>
   </div>
 </template>
@@ -27,7 +28,11 @@ export default {
   //监控data中的数据变化
   watch: {},
   //方法集合
-  methods: {},
+  methods: {
+    goBack() {
+      history.back()
+    }
+  },
   //生命周期 - 创建之前
   beforeCreate() {},
   //生命周期 - 在绑定元素的 attribute 或事件监听器被应用之前调用（可以访问当前this实例）

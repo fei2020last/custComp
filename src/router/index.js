@@ -13,7 +13,7 @@ const useContentForm = () => import('@/views/useComps/useContentForm.vue') //表
 const useToast = () => import('@/views/useComps/useToast.vue') //表单纵向排版布局
 const useLoading = () => import('@/views/useComps/useLoading.vue') //Loading自定义指令
 const useCarousel = () => import('@/views/useComps/useCarousel.vue') //Carousel 轮播图
-
+const useQuestionnaire = () => import('@/views/useComps/useQuestionnaire.vue') //Carousel 轮播图
 
 const routes = [{
     path: '/',
@@ -48,6 +48,11 @@ const routes = [{
     name: 'useCarousel',
     path: '/useCarousel',
     component: useCarousel,
+  },
+  {
+    name: 'useQuestionnaire',
+    path: '/useQuestionnaire',
+    component: useQuestionnaire,
   },
 
 
