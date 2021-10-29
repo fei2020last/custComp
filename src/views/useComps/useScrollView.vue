@@ -1,22 +1,39 @@
-<!-- 使用Toast弹窗 -->
+<!-- 使用上拉加载更多组件 -->
 <template>
-  <div class="useToast">
-    <el-button type="primary" @click.stop="submit">Toast弹窗</el-button>
-    <el-button @click.stop="goBack">返回</el-button>
+  <div class="useScrollView">
+    <div
+      ref="scroll"
+      class="scroll"
+      v-scroll-view="getList"
+      scroll-view-disabled="disabled"
+      scroll-view-distance="10"
+      scroll-view-delay="1000"
+    >
+      <div class="cm-pt-018 cm-tx-c item" v-for="item in list">
+        {{ item }}
+      </div>
+      <p class="cm-tx-c bottom">{{ loadText }}</p>
+    </div>
   </div>
 </template>
 
 <script>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
+
 export default {
-  name: 'useToast',
+  name: 'useScrollView',
   props: {},
   //import引入的组件需要注入到对象中才能使用
   components: {},
   data() {
     //这里存放数据
-    return {}
+    return {
+      count: 16,
+      loadText: '加载中',
+      disabled: false,
+      list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    }
   },
   //计算属性
   computed: {},
@@ -24,14 +41,16 @@ export default {
   watch: {},
   //方法集合
   methods: {
-    submit() {
-      this.$toast({
-        text: 'hahah',
-        type: 'warn'
-      })
+    getList() {
+      if (this.count >= 30) {
+        this.disabled = true
+        this.loadText = '加载完成'
+      }
+      this.getData()
     },
-    goBack() {
-      history.back()
+    getData() {
+      this.list.push(this.count)
+      this.count++
     }
   },
   //生命周期 - 创建之前
@@ -41,7 +60,14 @@ export default {
   // 在绑定元素的父组件挂载之前调用
   beforeMount() {},
   // 绑定元素的父组件被挂载时调用
-  mounted() {},
+  mounted() {
+    setTimeout(() => {
+      //设置要滑动的div高度
+      var scroll = this.$refs.scroll
+      var hei = window.innerHeight
+      scroll.style.height = hei + 'px'
+    }, 200)
+  },
   // 在包含组件的 VNode 更新之前调用
   beforeUpdate() {},
   // 在包含组件的 VNode 及其子组件的 VNode 更新之后调用
@@ -57,6 +83,18 @@ export default {
 <style lang="less">
 //@import url(); 引入公共css类
 
-.useToast {
+.useScrollView {
+  .scroll {
+    overflow: auto;
+  }
+  .item {
+    height: 50px;
+    background: pink;
+    border: 1px solid #ddd;
+  }
+  .bottom {
+    height: 40px;
+    line-height: 40px;
+  }
 }
 </style>

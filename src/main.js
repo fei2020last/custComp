@@ -30,6 +30,8 @@ import contentForm from "@/components/contentForm/index.js"
 import loadingDirective from '@/components/loading/directive.js'
 import carousel from "@/components/carouselImg/index.js"
 import questionnaire from "@/components/questionnaire/index.js"
+import toast from "@/components/toast/index.js"
+
 const app = createApp(App)
 app.use(router)
 app.use(ElementPlus)
@@ -54,6 +56,7 @@ app.mount('#app')
 //使用global内的全局变量
 app.config.globalProperties.$datas = global
 app.config.globalProperties.$echarts = echarts
+app.config.globalProperties.$toast = toast;
 
 //路由的前置守卫
 router.beforeEach((to, from, next) => {

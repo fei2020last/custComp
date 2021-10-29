@@ -1,16 +1,14 @@
-<!-- 使用Toast弹窗 -->
+<!-- 上拉加载更多组件 -->
 <template>
-  <div class="useToast">
-    <el-button type="primary" @click.stop="submit">Toast弹窗</el-button>
-    <el-button @click.stop="goBack">返回</el-button>
-  </div>
+  <div class="ScrollView"></div>
 </template>
 
 <script>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
+
 export default {
-  name: 'useToast',
+  name: 'el-scroll-view',
   props: {},
   //import引入的组件需要注入到对象中才能使用
   components: {},
@@ -23,17 +21,7 @@ export default {
   //监控data中的数据变化
   watch: {},
   //方法集合
-  methods: {
-    submit() {
-      this.$toast({
-        text: 'hahah',
-        type: 'warn'
-      })
-    },
-    goBack() {
-      history.back()
-    }
-  },
+  methods: {},
   //生命周期 - 创建之前
   beforeCreate() {},
   //生命周期 - 在绑定元素的 attribute 或事件监听器被应用之前调用（可以访问当前this实例）
@@ -57,6 +45,6 @@ export default {
 <style lang="less">
 //@import url(); 引入公共css类
 
-.useToast {
+.ScrollView {
 }
 </style>
