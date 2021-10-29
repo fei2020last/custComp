@@ -31,6 +31,7 @@ import loadingDirective from '@/components/loading/directive.js'
 import carousel from "@/components/carouselImg/index.js"
 import questionnaire from "@/components/questionnaire/index.js"
 import toast from "@/components/toast/index.js"
+import tabBottom from '@/components/tabbuttom/index.js'
 
 const app = createApp(App)
 app.use(router)
@@ -44,6 +45,8 @@ app.use(result)
 app.use(contentForm)
 app.use(carousel)
 app.use(questionnaire)
+app.use(tabBottom)
+
 
 //使用图片懒加载插件
 app.use(lazyPlugin, {

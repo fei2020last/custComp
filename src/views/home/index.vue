@@ -1,6 +1,7 @@
 <!-- 首页 -->
 <template>
   <div class="index">
+    <h3>Vue3.x移动端组件</h3>
     <el-row>
       <el-col :span="12">
         <el-button type="primary" @click="goUseResult">结果页组件</el-button>
@@ -27,6 +28,16 @@
         <el-button type="danger" @click="goQuestionnaire">问卷调查</el-button>
       </el-col>
     </el-row>
+
+    <el-row>
+      <el-col :span="12">
+        <el-button type="success" @click="goTabBottm">底部导航组件</el-button>
+      </el-col>
+      <el-col :span="12">
+        <el-button @click="goLoading">lddsdsd</el-button>
+      </el-col>
+    </el-row>
+
     <!-- v-lazy的使用 -->
     <!-- <div>
       <ul>
@@ -88,6 +99,9 @@ export default {
     },
     goQuestionnaire() {
       this.$router.push({ name: 'useQuestionnaire' })
+    },
+    goTabBottm() {
+      this.$router.push({ name: 'mine' })
     }
   },
   //生命周期 - 创建之前

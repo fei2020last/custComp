@@ -15,6 +15,10 @@ const useLoading = () => import('@/views/useComps/useLoading.vue') //Loading自�
 const useCarousel = () => import('@/views/useComps/useCarousel.vue') //Carousel 轮播图
 const useQuestionnaire = () => import('@/views/useComps/useQuestionnaire.vue') //Carousel 轮播图
 
+const mine = () => import('@/views/useComps/useTabBottom/mine.vue') //TabBottom 底部导航--'我的'
+const add = () => import('@/views/useComps/useTabBottom/add.vue') //TabBottom 底部导航--'添加'
+const team = () => import('@/views/useComps/useTabBottom/team.vue') //TabBottom 底部导航--'团队'
+
 const routes = [{
     path: '/',
     redirect: '/index'
@@ -55,6 +59,23 @@ const routes = [{
     component: useQuestionnaire,
   },
 
+  {
+    name: 'mine',
+    path: '/mine',
+    component: mine,
+  },
+
+  {
+    name: 'add',
+    path: '/add',
+    component: add,
+  },
+
+  {
+    name: 'team',
+    path: '/team',
+    component: team,
+  },
 
 
 ]
