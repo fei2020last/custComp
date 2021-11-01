@@ -32,6 +32,7 @@ import carousel from "@/components/carouselImg/index.js"
 import questionnaire from "@/components/questionnaire/index.js"
 import toast from "@/components/toast/index.js"
 import tabBottom from '@/components/tabbuttom/index.js'
+import halfScreen from '@/components/halfscreen/index.js'
 
 const app = createApp(App)
 app.use(router)
@@ -46,6 +47,7 @@ app.use(contentForm)
 app.use(carousel)
 app.use(questionnaire)
 app.use(tabBottom)
+app.use(halfScreen)
 
 
 //使用图片懒加载插件

@@ -34,7 +34,7 @@
         <el-button type="success" @click="goTabBottm">底部导航组件</el-button>
       </el-col>
       <el-col :span="12">
-        <el-button @click="goLoading">lddsdsd</el-button>
+        <el-button @click="goHalfScreen">底部半屏弹窗</el-button>
       </el-col>
     </el-row>
 
@@ -102,6 +102,9 @@ export default {
     },
     goTabBottm() {
       this.$router.push({ name: 'mine' })
+    },
+    goHalfScreen() {
+      this.$router.push({ name: 'useHalfScreen' })
     }
   },
   //生命周期 - 创建之前

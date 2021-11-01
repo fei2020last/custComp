@@ -10,14 +10,17 @@ import {
 const index = () => import('@/views/home/index.vue') //主页
 const useResult = () => import('@/views/useComps/useResult.vue') //结果页
 const useContentForm = () => import('@/views/useComps/useContentForm.vue') //表单纵向排版布局
-const useToast = () => import('@/views/useComps/useToast.vue') //表单纵向排版布局
+const useToast = () => import('@/views/useComps/useToast.vue') //Toast弹窗
 const useLoading = () => import('@/views/useComps/useLoading.vue') //Loading自定义指令
 const useCarousel = () => import('@/views/useComps/useCarousel.vue') //Carousel 轮播图
-const useQuestionnaire = () => import('@/views/useComps/useQuestionnaire.vue') //Carousel 轮播图
+const useQuestionnaire = () => import('@/views/useComps/useQuestionnaire.vue') //问卷调查组件
 
 const mine = () => import('@/views/useComps/useTabBottom/mine.vue') //TabBottom 底部导航--'我的'
 const add = () => import('@/views/useComps/useTabBottom/add.vue') //TabBottom 底部导航--'添加'
 const team = () => import('@/views/useComps/useTabBottom/team.vue') //TabBottom 底部导航--'团队'
+
+const useHalfScreen = () => import('@/views/useComps/useHalfScreen.vue') //半屏弹窗组件
+
 
 const routes = [{
     path: '/',
@@ -76,6 +79,12 @@ const routes = [{
     path: '/team',
     component: team,
   },
+  {
+    name: 'useHalfScreen',
+    path: '/useHalfScreen',
+    component: useHalfScreen,
+  },
+
 
 
 ]

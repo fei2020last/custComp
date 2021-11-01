@@ -1,9 +1,10 @@
-<!-- '我的' 页面 -->
+<!-- 半屏弹窗组件 -->
 <template>
-  <div class="mine">
-    <h1>这是‘我的’页面</h1>
+  <div class="useHalfScreen">
+    <el-button @click="showScreen" type="success">点我</el-button>
     <el-button @click="goBack">返回</el-button>
-    <el-tab-bottom :tabList="tabList" :defaultTab="0" @on-click="changeTabBottom" />
+    <el-divider></el-divider>
+    <half-screen :visible="dialog.visible" :list="screenList" title="详情" @close="close" />
   </div>
 </template>
 
@@ -12,34 +13,17 @@
 //例如：import 《组件名称》 from '《组件路径》';
 
 export default {
-  name: 'mine',
+  name: 'useHalfScreen',
   props: {},
   //import引入的组件需要注入到对象中才能使用
   components: {},
   data() {
     //这里存放数据
     return {
-      //公共的 tabList 可放在 store 中。
-      tabList: [
-        {
-          title: '我的',
-          path: 'mine',
-          icon: require('@/assets/img/mine.png'),
-          checkedIcon: require('@/assets/img/mineChecked.png')
-        },
-        {
-          title: '添加',
-          path: 'add',
-          icon: require('@/assets/img/add.png'),
-          checkedIcon: require('@/assets/img/addChecked.png')
-        },
-        {
-          title: '团队',
-          path: 'team',
-          icon: require('@/assets/img/team.png'),
-          checkedIcon: require('@/assets/img/teamChecked.png')
-        }
-      ]
+      dialog: {
+        visible: false
+      },
+      screenList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     }
   },
   //计算属性
@@ -48,8 +32,16 @@ export default {
   watch: {},
   //方法集合
   methods: {
-    //改变底部tab标签
-    changeTabBottom(item, index) {},
+    //展示半屏弹窗
+    showScreen() {
+      this.dialog.visible = true
+    },
+    //关闭半屏弹窗
+    close(val) {
+      if (val) {
+        this.dialog.visible = false
+      }
+    },
     goBack() {
       this.$router.push({ name: 'index' })
     }
@@ -77,6 +69,6 @@ export default {
 <style lang="less">
 //@import url(); 引入公共css类
 
-.mine {
+.useHalfScreen {
 }
 </style>
