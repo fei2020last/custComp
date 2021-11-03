@@ -38,6 +38,15 @@
       </el-col>
     </el-row>
 
+    <el-row>
+      <el-col :span="12">
+        <el-button type="primary" @click="goDropdownMenu">下拉菜单</el-button>
+      </el-col>
+      <el-col :span="12">
+        <el-button type="warning" @click="goContentForm">消息提示</el-button>
+      </el-col>
+    </el-row>
+
     <!-- v-lazy的使用 -->
     <!-- <div>
       <ul>
@@ -105,6 +114,9 @@ export default {
     },
     goHalfScreen() {
       this.$router.push({ name: 'useHalfScreen' })
+    },
+    goDropdownMenu() {
+      this.$router.push({ name: 'useDropdownMenu' })
     }
   },
   //生命周期 - 创建之前
