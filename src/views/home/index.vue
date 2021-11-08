@@ -43,9 +43,18 @@
         <el-button type="primary" @click="goDropdownMenu">下拉菜单</el-button>
       </el-col>
       <el-col :span="12">
-        <el-button type="warning" @click="goFather">消息提示</el-button>
+        <el-button type="warning" @click="goFather">组件传值方法</el-button>
       </el-col>
     </el-row>
+
+    <!-- <el-row>
+      <el-col :span="12">
+        <el-button type="danger" @click="goMes">消息提示</el-button>
+      </el-col>
+      <el-col :span="12">
+        <el-button type="info" @click="goFather">组件传值方法</el-button>
+      </el-col>
+    </el-row> -->
 
     <!-- v-lazy的使用 -->
     <!-- <div>
