@@ -22,6 +22,8 @@ const team = () => import('@/views/useComps/useTabBottom/team.vue') //TabBottom 
 const useHalfScreen = () => import('@/views/useComps/useHalfScreen.vue') //半屏弹窗组件
 const useDropdownMenu = () => import('@/views/useComps/useDropdownMenu.vue') //下拉菜单组件
 
+const father = () => import('@/views/useComps/comps/Father.vue') //父组件
+
 
 const routes = [{
     path: '/',
@@ -89,6 +91,12 @@ const routes = [{
     name: 'useDropdownMenu',
     path: '/useDropdownMenu',
     component: useDropdownMenu,
+  },
+
+  {
+    name: 'father',
+    path: '/father',
+    component: father,
   },
 
 

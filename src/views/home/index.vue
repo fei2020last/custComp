@@ -43,7 +43,7 @@
         <el-button type="primary" @click="goDropdownMenu">下拉菜单</el-button>
       </el-col>
       <el-col :span="12">
-        <el-button type="warning" @click="goContentForm">消息提示</el-button>
+        <el-button type="warning" @click="goFather">消息提示</el-button>
       </el-col>
     </el-row>
 
@@ -117,6 +117,9 @@ export default {
     },
     goDropdownMenu() {
       this.$router.push({ name: 'useDropdownMenu' })
+    },
+    goFather() {
+      this.$router.push({ name: 'father' })
     }
   },
   //生命周期 - 创建之前

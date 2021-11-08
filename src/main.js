@@ -14,6 +14,9 @@ import * as echarts from 'echarts'
 //element+
 import ElementPlus from 'element-plus'
 import 'element-plus/lib/theme-chalk/index.css'
+
+
+
 //View UI
 // vue3 + @vue/cli（4.5.13）+ ViewUI引入报错，百度了，暂时没有解决的办法
 // import ViewUI from 'view-design';
@@ -50,6 +53,7 @@ app.use(tabBottom)
 app.use(halfScreen)
 
 
+
 //使用图片懒加载插件
 app.use(lazyPlugin, {
   loading: require('@/assets/img/fail.png'), //图片加载中时显示的默认图片
@@ -62,6 +66,7 @@ app.mount('#app')
 app.config.globalProperties.$datas = global
 app.config.globalProperties.$echarts = echarts
 app.config.globalProperties.$toast = toast;
+
 
 //路由的前置守卫
 router.beforeEach((to, from, next) => {
