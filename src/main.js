@@ -32,12 +32,25 @@ import lazyPlugin from 'vue3-lazy' //vue3-lazy的使用(npm install vue3-lazy -S
 import helloworld from '@/components/HelloWorld.vue'
 import result from '@/components/result/index.js'
 import contentForm from "@/components/contentForm/index.js"
-import loadingDirective from '@/components/loading/directive.js'
 import carousel from "@/components/carouselImg/index.js"
 import questionnaire from "@/components/questionnaire/index.js"
 import toast from "@/components/toast/index.js"
 import tabBottom from '@/components/tabbuttom/index.js'
 import halfScreen from '@/components/halfscreen/index.js'
+
+// 指令
+import loadingDirective from '@/components/loading/directive.js'
+
+import {
+  wdrag
+}
+from '@/components/drag/dragWeb.js' // Web拖拽指令
+
+import {
+  mdrag
+}
+from '@/components/drag/dragMobile.js' // Mobile拖拽指令
+
 
 const app = createApp(App)
 app.use(router)
@@ -62,6 +75,11 @@ app.use(lazyPlugin, {
   error: require('@/assets/img/fail.png') //图片加载失败后显示的图片
 })
 app.directive('loading', loadingDirective)
+
+/* wdrag--Web拖拽指令、mdrag--Mobile拖拽指令 */
+// app.directive('drag', wdrag)
+app.directive('drag', mdrag)
+
 app.mount('#app')
 
 //使用global内的全局变量

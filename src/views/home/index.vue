@@ -47,6 +47,15 @@
       </el-col>
     </el-row>
 
+    <el-row>
+      <el-col :span="12">
+        <el-button type="danger" @click="goDrag">拖拽指令</el-button>
+      </el-col>
+      <el-col :span="12">
+        <el-button type="info" @click="goNothing">Nothing</el-button>
+      </el-col>
+    </el-row>
+
     <!-- <el-row>
       <el-col :span="12">
         <el-button type="danger" @click="goMes">消息提示</el-button>
@@ -129,6 +138,9 @@ export default {
     },
     goFather() {
       this.$router.push({ name: 'father' })
+    },
+    goDrag() {
+      this.$router.push({ name: 'useDrag' })
     }
   },
   //生命周期 - 创建之前

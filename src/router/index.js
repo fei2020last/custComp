@@ -24,6 +24,8 @@ const useDropdownMenu = () => import('@/views/useComps/useDropdownMenu.vue') //�
 
 const father = () => import('@/views/useComps/comps/Father.vue') //父组件
 
+const useDrag = () => import('@/views/useComps/useDrag.vue') //下拉菜单组件
+
 
 const routes = [{
     path: '/',
@@ -97,6 +99,11 @@ const routes = [{
     name: 'father',
     path: '/father',
     component: father,
+  },
+  {
+    name: 'useDrag',
+    path: '/useDrag',
+    component: useDrag,
   },
 
 
