@@ -1,83 +1,111 @@
 // 绑定类
-class MoveBuuild {
-  constructor(ele) {
-    this.ele = ele;
+class Drag {
+  constructor(el, option = {}) {
+    this.el = el;
+    /* 绑定的属性集合 */
+    this.option = option;
+    /* 需拖动的元素 */
+    this.dragEle = option.value;
+
+    /* 鼠标位置和div的左上角位置 */
+    this.screenWidth = document.body.clientWidth || window.screen.width || document.documentElement.offsetWidth;
+    this.screenHeight = document.body.clientHeight || window.screen.height || document.documentElement.offsetHeight;
+
+    /* 元素开始移动时的位置信息 */
+    this.startX = 0;
+    this.startY = 0;
+
+    /* 元素移动距离 */
+    this.moveX = 0;
+    this.moveY = 0;
+
+    /* 元素移动之后的位置信息 */
+    this.nowX = 0;
+    this.nowY = 0;
+
+    /* 判断可否进行移动 */
+    this.moveStatus = false;
+
     this.init();
   }
-
-  domPosition = {
-    x: 0,
-    y: 0
-  }
-
-  startPosition = {
-    x: 0,
-    y: 0
-  }
-
-  openMove = false
-  transitionMove = {
-    transform: `translate( 0px, 0px )`,
-    background: 'red'
-  }
-
-  setMove(x = 0, y = 0) {
-    this.ele.style.transform = `translate( ${x}px, ${y}px )`;
-    this.ele.style.background = 'red';
-  }
-
+  //初始化事件
   init() {
-    this.ele.addEventListener('touchstart', (e) => this.start(e));
-    this.ele.addEventListener('touchmove', (e) => this.move(e));
-    this.ele.addEventListener('touchend', (e) => this.end(e));
-    this.setMove();
+    this.el.addEventListener('touchstart', (e) => this.start(e));
+    this.el.addEventListener('touchmove', (e) => this.move(e));
+    this.el.addEventListener('touchend', (e) => this.end(e));
   }
 
+  //开始触碰
   start(e) {
-    const el = e.target;
-    const {
-      pageX,
-      pageY
-    } = e.changedTouches[0];
-    this.startPosition = {
-      x: pageX,
-      y: pageY
-    }
-    const domPosition = el.style.transform.match(/[\d]+.?[\d]*px/igm);
-    console.log("e---->", e);
-    console.log("domPosition", domPosition);
-    this.domPosition = {
-      x: parseInt(domPosition[0].replace('px', '0')),
-      y: parseInt(domPosition[1].replace('px', '0')),
-    }
-    this.openMove = true;
+    //判定可进行移动
+    this.moveStatus = true;
+
+    let tar = e.target;
+
+    //记录初始位置
+    this.startX = e.touches[0].clientX - e.target.offsetLeft;
+    this.startY = e.touches[0].clientY - e.target.offsetTop;
   }
 
+
+
+  //移动
   move(e) {
-    if (!this.openMove) {
-      return
-    };
-    const {
-      pageX,
-      pageY
-    } = e.changedTouches[0];
-    const movePoisition = {
-      x: pageX,
-      y: pageY
-    }
-    const x = movePoisition.x - this.startPosition.x + this.domPosition.x;
-    const y = movePoisition.y - this.startPosition.y + this.domPosition.y;
-    const moveStyle = {
-      transform: `translate( ${x}px, ${y}px )`,
-      background: 'red'
-    }
+    if (this.moveStatus) {
+      let tar = e.target;
+      //元素移动后的位置
+      this.nowX = e.touches[0].clientX;
+      this.nowY = e.touches[0].clientY;
 
-    this.setMove(x, y);
-    this.transitionMove = moveStyle;
+      //计算目标元素需移动的距离
+      this.moveX = this.nowX - this.startX;
+      this.moveY = this.nowY - this.startY;
+
+      //检测是否越界，并调整
+      this.checkOver(tar);
+
+      //进行拖动元素移动操作
+      this.setMove(tar);
+
+      e.preventDefault()
+      e.stopPropagation();
+    }
   }
 
+  //结束
   end(e) {
-    this.openMove = false;
+    // console.log('end')
+    this.moveStatus = false;
+  }
+
+  checkOver(tar) {
+    /**
+     * 检测元素是否越界
+     * clientWidth = width + 左右padding
+     * offsetWidth = width + 左右padding + 左右boder
+     */
+    // 限制滑块超出页面
+    // console.log('屏幕大小', this.screenWidth, this.screenHeight)
+    if (this.moveX < 0) {
+      this.moveX = 0
+    } else if (this.moveX > this.screenWidth - tar.clientWidth) {
+      this.moveX = this.screenWidth - tar.clientWidth
+    }
+    if (this.moveY < 0) {
+      this.moveY = 0
+    } else if (this.moveY > this.screenHeight - tar.clientHeight) {
+      this.moveY = this.screenHeight - tar.clientHeight
+    }
+
+  }
+
+  setMove(tar) {
+    var x = this.moveX || 0,
+      y = this.moveY || 0;
+    this.el.style = 'position: absolute;-webkit-transform: translate(' + x + 'px,' + y + 'px);-moz-transform: translate(' + x + 'px,' + y + 'px);-o-transform: translate(' + x + 'px,' + y + 'px);-ms-transform: translate(' + x + 'px,' + y + 'px);';
+    //this.el.style.transform = `translate( ${x}px, ${y}px )`;
+
+
   }
 
 }
@@ -85,7 +113,7 @@ class MoveBuuild {
 //将封装好的拖拽整合在指令上
 export const mdrag = {
   mounted(el, binding) {
-    new MoveBuuild(el, binding.value || {})
+    new Drag(el, binding || {})
   }
 
 }

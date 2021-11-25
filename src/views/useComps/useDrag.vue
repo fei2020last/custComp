@@ -3,19 +3,10 @@
   <div class="useDrag">
     <el-button @click="goBack">返回</el-button>
     <el-button @click="closeDiaBoxWeb">展示弹窗——Web端</el-button>
-    <div class="diaBox" v-show="showBoxWeb" v-drag>
+    <el-divider></el-divider>
+    <div class="diaBox" v-show="showBoxWeb" v-drag="dragVal">
       <div class="imgdiv">
         <img @click="closeDiaBoxWeb" src="@/assets/img/icon-gb.png" alt="" />
-      </div>
-      <div class="content">
-        111
-      </div>
-    </div>
-    <el-divider></el-divider>
-    <el-button @click="closeDiaBoxMobile">展示弹窗——Mobile端</el-button>
-    <div class="diaBox" v-show="showBoxMobile" v-drag>
-      <div class="imgdiv">
-        <img @click="closeDiaBoxMobile" src="@/assets/img/icon-gb.png" alt="" />
       </div>
       <div class="content">
         111
@@ -36,7 +27,7 @@ export default {
     //这里存放数据
     return {
       showBoxWeb: false,
-      showBoxMobile: false
+      dragVal: 'diaBox'
     }
   },
   //计算属性
@@ -50,9 +41,6 @@ export default {
     },
     closeDiaBoxWeb() {
       this.showBoxWeb = !this.showBoxWeb
-    },
-    closeDiaBoxMobile() {
-      this.showBoxMobile = !this.showBoxMobile
     }
   },
   //生命周期 - 创建之前
@@ -79,10 +67,14 @@ export default {
 //@import url(); 引入公共css类
 
 .useDrag {
-  padding: 10px;
+  width: 100%;
+  height: calc(100% - 60px);
+  position: absolute;
   .diaBox {
+    padding: 10px;
     width: 50%;
     height: 100px;
+    position: fixed;
     z-index: 10;
     background: url('../../assets/img/bg-all2.png') no-repeat;
     background-size: 100% 100%;
@@ -94,6 +86,9 @@ export default {
         cursor: pointer;
       }
     }
+  }
+  .el-button {
+    margin-bottom: 10px;
   }
 }
 </style>
